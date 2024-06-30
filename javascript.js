@@ -29,16 +29,22 @@ function getHumanChoice() {
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === "rock" && computerChoice === "paper") {
       console.log("You lost! Paper beats rock!");
+      return(++computerScore);
   } else if (humanChoice === "rock" && computerChoice === "scissors") {
       console.log("You won! Rock beats scissors!");
+      return(++humanScore);
     } else if (humanChoice === "paper" && computerChoice === "scissors") {
       console.log("You lost! Scissors beats paper!");
+      return(++computerScore);
   } else  if (humanChoice === "paper" && computerChoice === "rock") {
       console.log("You won! Paper beats rock!");
+      return(++humanScore);
   } else if (humanChoice === "scissors" && computerChoice === "paper") {
       console.log("You won! Scissors beats paper!");
+      return(++humanScore);
   } else if (humanChoice === "scissors" && computerChoice === "rock") {
       console.log("You lost! Rock beats scissors!")
+      return(++computerScore);
   } else {
       console.log("You tied as both sides choose " + humanSelection + "! No points were assigned!");
   }
