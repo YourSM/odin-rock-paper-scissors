@@ -1,10 +1,10 @@
+
+
 let humanScore = 0
 let computerScore = 0
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection)
+let humanSelection = 0
+let computerSelection = 0
 
 function getComputerChoice(y) {
   let x = Math.random();
@@ -13,16 +13,16 @@ function getComputerChoice(y) {
   } else if (x >= 0.4 && x <= 0.6) {
     y = "scissors";
     } else y = "paper";
-   return(y)
+   return(computerSelection = y)
   }
 
 function getHumanChoice() {
   let humanChoice = prompt('Please choose between "Rock" "Paper" and "Scissors"');
   if (humanChoice.toLowerCase() === "rock" || humanChoice.toLowerCase() === "paper" || humanChoice.toLowerCase() === "scissors") {
-    return(humanChoice.toLowerCase());
+    return(humanSelection = humanChoice.toLowerCase());
   } else {
       console.log("You didn\'t choose an appropriate value, so one was assigned!");
-      return(getComputerChoice(humanChoice));
+      return(humanSelection = getComputerChoice(humanChoice));
   }
 }
 
@@ -46,6 +46,13 @@ function playRound(humanChoice, computerChoice) {
       console.log("You lost! Rock beats scissors!")
       return(++computerScore);
   } else {
-      console.log("You tied as both sides choose " + humanSelection + "! No points were assigned!");
+      console.log("You tied as both sides choose " + humanChoice + "! No points were assigned!");
+  }
+}
+
+for (let i = 0; i < 5; i++) {
+  playRound(getHumanChoice(), getComputerChoice());
+  if (humanSelection === computerSelection) {
+    --i;
   }
 }
