@@ -1,24 +1,32 @@
-
-
 let humanScore = 0
 let computerScore = 0
 
 let humanSelection = 0
 let computerSelection = 0
 
+for (let i = 0; i < 5; i++) {
+  playRound(getHumanChoice(), getComputerChoice());
+  if (humanSelection === computerSelection) {
+    --i;
+  }
+}
+
 function getComputerChoice(y) {
-  let x = Math.random();
-  if (x >= 0 && x <= 0.3) {
-    y = "rock";
-  } else if (x >= 0.4 && x <= 0.6) {
-    y = "scissors";
-    } else y = "paper";
-   return(computerSelection = y)
+  let randomSelection = Math.random();
+  if (randomSelection >= 0 && randomSelection <= 0.3) {
+    computerChoice = "rock";
+  } else if (randomSelection >= 0.4 && randomSelection <= 0.6) {
+    computerChoice = "scissors";
+    } else computerChoice = "paper";
+   return(computerSelection = computerChoice)
   }
 
 function getHumanChoice() {
   let humanChoice = prompt('Please choose between "Rock" "Paper" and "Scissors"');
-  if (humanChoice.toLowerCase() === "rock" || humanChoice.toLowerCase() === "paper" || humanChoice.toLowerCase() === "scissors") {
+  if (humanChoice === null) {
+    console.log("You didn\'t choose an appropriate value, so one was assigned!");
+    return(humanSelection = getComputerChoice(humanChoice));
+} else if (humanChoice.toLowerCase() === "rock" || humanChoice.toLowerCase() === "paper" || humanChoice.toLowerCase() === "scissors") {
     return(humanSelection = humanChoice.toLowerCase());
   } else {
       console.log("You didn\'t choose an appropriate value, so one was assigned!");
@@ -47,12 +55,5 @@ function playRound(humanChoice, computerChoice) {
       return(++computerScore);
   } else {
       console.log("You tied as both sides choose " + humanChoice + "! No points were assigned!");
-  }
-}
-
-for (let i = 0; i < 5; i++) {
-  playRound(getHumanChoice(), getComputerChoice());
-  if (humanSelection === computerSelection) {
-    --i;
   }
 }
