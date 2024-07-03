@@ -11,6 +11,12 @@ for (let i = 0; i < 5; i++) {
   }
 }
 
+if (humanScore > computerScore) {
+  console.log("Congratulations, you won!")
+} else {
+  console.log("Sorry, you lost against the computer...")
+}
+
 function getComputerChoice(y) {
   let randomSelection = Math.random();
   if (randomSelection >= 0 && randomSelection <= 0.3) {
