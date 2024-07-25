@@ -4,7 +4,6 @@ let computerScore = 0
 let humanSelection = 0
 let computerSelection = 0
 
-  // playRound(getHumanChoice(), getComputerChoice());
 
 if (humanScore > computerScore) {
   console.log("Congratulations, you won!")
@@ -37,51 +36,57 @@ function getHumanChoice() {
 
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === "rock" && computerChoice === "paper") {
-      console.log("You lost! Paper beats rock!");
+      resultPara.textContent = "You lost! Paper beats rock"
       return(++computerScore);
   } else if (humanChoice === "rock" && computerChoice === "scissors") {
-      console.log("You won! Rock beats scissors!");
+      resultPara.textContent = "You won! Rock beats scissors!";
       return(++humanScore);
     } else if (humanChoice === "paper" && computerChoice === "scissors") {
-      console.log("You lost! Scissors beats paper!");
+      resultPara.textContent = "You lost! Scissors beats paper!";
       return(++computerScore);
   } else  if (humanChoice === "paper" && computerChoice === "rock") {
-      console.log("You won! Paper beats rock!");
+    resultPara.textContent = "You won! Paper beats rock!";
       return(++humanScore);
   } else if (humanChoice === "scissors" && computerChoice === "paper") {
-      console.log("You won! Scissors beats paper!");
+    resultPara.textContent = "You won! Scissors beats paper!";
       return(++humanScore);
   } else if (humanChoice === "scissors" && computerChoice === "rock") {
-      console.log("You lost! Rock beats scissors!")
+    resultPara.textContent = "You lost! Rock beats scissors!"
       return(++computerScore);
   } else {
-      console.log("You tied as both sides choose " + humanChoice + "! No points were assigned!");
+    resultPara.textContent = "You tied as both sides choose " + humanChoice + "! No points were assigned!";
   }
 }
 
-
-// create three buttons.
-  // html.
-  // add event listener to buttons to call playRound() with
-  // correct humanSelection pressed. Keep console.log.
     const selection = document.querySelector("#selection");
+    const results = document.querySelector("#results");
+
     selection.addEventListener("click", (event) => {
       let target = event.target;
 
       switch(target.id) {
         case "rock" :
          playRound("rock", getComputerChoice())
+         score.textContent = "Computer:" + computerScore + "player" + humanScore;
           break;
         case "paper" :
          playRound("paper", getComputerChoice());
+         score.textContent = "Computer:" + computerScore + "player" + humanScore;
          break;
         case "scissors" :
          playRound("scissors", getComputerChoice());
+         score.textContent = "Computer:" + computerScore + "player" + humanScore;
          break;
       }
     })
 
+    const resultPara = document.createElement("p")
+    results.appendChild(resultPara)
 
+  const score = document.createElement("p")
+  results.appendChild(score)
+
+  
 // add div for displaying results.
 // change console.logs to DOM methods.
 // Display running score amd announce winner when one player
