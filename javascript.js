@@ -12,7 +12,7 @@ if (humanScore > computerScore) {
   console.log("Sorry, you lost against the computer...")
 }
 
-function getComputerChoice(y) {
+function getComputerChoice() {
   let randomSelection = Math.random();
   if (randomSelection >= 0 && randomSelection <= 0.3) {
     computerChoice = "rock";
@@ -62,12 +62,24 @@ function playRound(humanChoice, computerChoice) {
 
 // create three buttons.
   // html.
-  // const button = document.querySelector("button");
   // add event listener to buttons to call playRound() with
   // correct humanSelection pressed. Keep console.log.
-    // button.addEventListener("click". () => {
-  //      playRound()
-    // })
+    const selection = document.querySelector("#selection");
+    selection.addEventListener("click", (event) => {
+      let target = event.target;
+
+      switch(target.id) {
+        case "rock" :
+         playRound("rock", getComputerChoice())
+          break;
+        case "paper" :
+         playRound("paper", getComputerChoice());
+         break;
+        case "scissors" :
+         playRound("scissors", getComputerChoice());
+         break;
+      }
+    })
 
 
 // add div for displaying results.
