@@ -53,17 +53,15 @@ selection.addEventListener("click", (event) => {
   switch(target.id) {
     case "rock" :
       playRound("rock", getComputerChoice())
-      score.textContent = "Computer:" + computerScore + "player" + humanScore;
       break;
     case "paper" :
       playRound("paper", getComputerChoice());
-      score.textContent = "Computer:" + computerScore + "player" + humanScore;
       break;
     case "scissors" :
       playRound("scissors", getComputerChoice());
-      score.textContent = "Computer:" + computerScore + "player" + humanScore;
       break;
   }
+  score.textContent = "Computer: " + computerScore + " Player: " + humanScore;
   if (humanScore === 5 || computerScore === 5) {
    if (humanScore > computerScore) {
      winner.textContent = "Congratulations, you won the game!"
