@@ -4,12 +4,7 @@ let computerScore = 0
 let humanSelection = 0
 let computerSelection = 0
 
-for (let i = 0; i < 5; i++) {
-  playRound(getHumanChoice(), getComputerChoice());
-  if (humanSelection === computerSelection) {
-    --i;
-  }
-}
+  // playRound(getHumanChoice(), getComputerChoice());
 
 if (humanScore > computerScore) {
   console.log("Congratulations, you won!")
@@ -63,3 +58,19 @@ function playRound(humanChoice, computerChoice) {
       console.log("You tied as both sides choose " + humanChoice + "! No points were assigned!");
   }
 }
+
+
+// create three buttons.
+  // html.
+  // const button = document.querySelector("button");
+  // add event listener to buttons to call playRound() with
+  // correct humanSelection pressed. Keep console.log.
+    // button.addEventListener("click". () => {
+  //      playRound()
+    // })
+
+
+// add div for displaying results.
+// change console.logs to DOM methods.
+// Display running score amd announce winner when one player
+// obtains 5 points.
