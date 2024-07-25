@@ -4,13 +4,6 @@ let computerScore = 0
 let humanSelection = 0
 let computerSelection = 0
 
-
-if (humanScore > computerScore) {
-  console.log("Congratulations, you won!")
-} else {
-  console.log("Sorry, you lost against the computer...")
-}
-
 function getComputerChoice() {
   let randomSelection = Math.random();
   if (randomSelection >= 0 && randomSelection <= 0.3) {
@@ -34,7 +27,7 @@ function getHumanChoice() {
   }
 }
 
-function playRound(humanChoice, computerChoice) {
+function playRound(humanChoice, computerChoice) { 
   if (humanChoice === "rock" && computerChoice === "paper") {
       resultPara.textContent = "You lost! Paper beats rock"
       return(++computerScore);
@@ -58,36 +51,40 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-    const selection = document.querySelector("#selection");
-    const results = document.querySelector("#results");
+const selection = document.querySelector("#selection");
+const results = document.querySelector("#results");
+const resultPara = document.createElement("p");
+const score = document.createElement("p");
+const winner = document.createElement("p");
 
-    selection.addEventListener("click", (event) => {
-      let target = event.target;
+results.appendChild(resultPara)
+results.appendChild(score)
+results.appendChild(winner)
 
-      switch(target.id) {
-        case "rock" :
-         playRound("rock", getComputerChoice())
-         score.textContent = "Computer:" + computerScore + "player" + humanScore;
-          break;
-        case "paper" :
-         playRound("paper", getComputerChoice());
-         score.textContent = "Computer:" + computerScore + "player" + humanScore;
-         break;
-        case "scissors" :
-         playRound("scissors", getComputerChoice());
-         score.textContent = "Computer:" + computerScore + "player" + humanScore;
-         break;
-      }
-    })
+selection.addEventListener("click", (event) => {
 
-    const resultPara = document.createElement("p")
-    results.appendChild(resultPara)
-
-  const score = document.createElement("p")
-  results.appendChild(score)
-
-  
-// add div for displaying results.
-// change console.logs to DOM methods.
-// Display running score amd announce winner when one player
-// obtains 5 points.
+  let target = event.target;
+  switch(target.id) {
+    case "rock" :
+      playRound("rock", getComputerChoice())
+      score.textContent = "Computer:" + computerScore + "player" + humanScore;
+      break;
+    case "paper" :
+      playRound("paper", getComputerChoice());
+      score.textContent = "Computer:" + computerScore + "player" + humanScore;
+      break;
+    case "scissors" :
+      playRound("scissors", getComputerChoice());
+      score.textContent = "Computer:" + computerScore + "player" + humanScore;
+      break;
+  }
+  if (humanScore === 5 || computerScore === 5) {
+   if (humanScore > computerScore) {
+     winner.textContent = "Congratulations, you won the game!"
+   } else {
+     winner.textContent = "Sorry, you lost against the computer..."
+   }
+   humanScore = 0
+  computerScore = 0
+ } else winner.textContent = ""
+})
