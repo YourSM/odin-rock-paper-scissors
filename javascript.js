@@ -14,19 +14,6 @@ function getComputerChoice() {
    return(computerSelection = computerChoice)
   }
 
-function getHumanChoice() {
-  let humanChoice = prompt('Please choose between "Rock" "Paper" and "Scissors"');
-  if (humanChoice === null) {
-    console.log("You didn\'t choose an appropriate value, so one was assigned!");
-    return(humanSelection = getComputerChoice(humanChoice));
-} else if (humanChoice.toLowerCase() === "rock" || humanChoice.toLowerCase() === "paper" || humanChoice.toLowerCase() === "scissors") {
-    return(humanSelection = humanChoice.toLowerCase());
-  } else {
-      console.log("You didn\'t choose an appropriate value, so one was assigned!");
-      return(humanSelection = getComputerChoice(humanChoice));
-  }
-}
-
 function playRound(humanChoice, computerChoice) { 
   if (humanChoice === "rock" && computerChoice === "paper") {
       resultPara.textContent = "You lost! Paper beats rock"
@@ -62,7 +49,6 @@ results.appendChild(score)
 results.appendChild(winner)
 
 selection.addEventListener("click", (event) => {
-
   let target = event.target;
   switch(target.id) {
     case "rock" :
